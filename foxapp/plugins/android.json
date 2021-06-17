@@ -1,0 +1,55 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com.samsung.richnotification": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-bluetooth-serial": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "edu.polytech.foxtrotters"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "edu.polytech.foxtrotters"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        }
+    }
+}

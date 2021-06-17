@@ -1,0 +1,64 @@
+
+<script>
+  function onFileLoad(elementId, event) {
+    var plants = JSON.parse(event.target.result).species;
+
+    var plantsConv = [];
+
+    for(var i in plants){
+      var plant = plants[i];
+      var newPlant = {
+        "commonName": plant.first_common,
+        "latinName": plant.name,
+        "family": plant.family,
+        "genre": plant.genus,
+        "uses": [],
+        "pois": [],
+        "image": [plant.image]
+      };
+      plantsConv.push(newPlant);
+      goUp(newPlant);
+    }
+    document.getElementById(elementId).innerText = JSON.stringify(plantsConv);
+  }
+
+  function onChooseFile(event, onLoadFileHandler) {
+    if (typeof window.FileReader !== 'function')
+      throw ("The file API isn't supported on this browser.");
+    let input = event.target;
+    if (!input)
+      throw ("The browser does not properly implement the event object");
+    if (!input.files)
+      throw ("This browser does not support the `files` property of the file input.");
+    if (!input.files[0])
+      return undefined;
+    let file = input.files[0];
+    let fr = new FileReader();
+    fr.onload = onLoadFileHandler;
+    fr.readAsText(file);
+  }
+  function goUp(plant) {
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('POST', 'http://localhost:3000/api/plants/');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        console.log("ok");
+      }
+      else if (xhr.status !== 200) {
+        console.log('Request failed.  Returned status of ' + xhr.status);
+      }
+    };
+    xhr.send(plant);
+  }
+
+</script>
+
+
+<input ng-model="photo"
+       onchange="angular.element(this).scope().file_changed(this)"
+       type="file" accept="application/json" />
+
+

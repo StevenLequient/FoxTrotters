@@ -1,0 +1,29 @@
+<section class="topaint">
+  <div class="page-header">
+    <h1>Ditus</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="ditu in vm.ditus"
+       ui-sref="ditus.view({ dituId: ditu._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="ditu.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="ditu.user" ng-bind="ditu.user.displayName"></span>
+        <span ng-if="!ditu.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="ditu.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.ditus.$resolved && !vm.ditus.length">
+    No Ditus yet, why don't you <a ui-sref="ditus.create">create one</a>?
+  </div>
+
+<div>
+  <ng-map class="gov-map" zoom="10" center="51.5112139, -0.1198244">
+    <marker ng-repeat="marker in listmarker" position={{marker.latitude}},{{marker.longitude}}/>
+  </ng-map>
+</div>
+<p>eee</p>
+</section>

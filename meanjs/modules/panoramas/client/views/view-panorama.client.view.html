@@ -1,0 +1,31 @@
+<section class="topaint">
+  <div class="page-header">
+    <h1 ng-bind="vm.panorama.name"></h1>
+  </div>
+  <div>
+    <img ng-src="{{vm.panorama.image}}"/>
+  </div>
+  <div class="pull-right"
+       ng-show="vm.panorama.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="panoramas.edit({ panoramaId: vm.panorama._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.panorama.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.panorama.user"
+            ng-bind="vm.panorama.user.displayName"></span>
+      <span ng-if="!vm.panorama.user">Deleted User</span>
+    </em>
+  </small>
+
+
+  <p class="lead" ng-bind="vm.panorama.content"></p>
+</section>

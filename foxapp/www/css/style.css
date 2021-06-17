@@ -1,0 +1,233 @@
+ng-map {
+  width:100%;
+  height:100%;
+  position: absolute;
+  z-index: 2;
+}
+
+.control{
+  position: absolute;
+  bottom: 10px;
+  z-index: 5;
+  padding-left: 10px;
+  display:inline;
+  margin-right:16px;
+  width: 100%;
+  height: 100px;
+}
+
+.control input:last-child{
+  margin-right:0px;
+}
+
+.upload-container{
+  background: #FFFFFF;
+  z-index: 3;
+}
+.search{
+  display: block;
+  width: 100%;
+  vertical-align: top;
+  display: inline-block;
+}
+.rowelement {
+  display: inline-block;
+  margin-right: 6px;
+  background-color: #EEE;
+}
+.clear {
+  clear: both;
+}
+.plantSearch{
+  display:inline-block;
+  size: auto;
+}
+
+.search > svg{
+  display: inline-block;
+  size: auto;
+  background: #FFFFFF;
+}
+
+.button-content{
+  height: 100%;
+  width: 100%;
+  margin-top: 20%;
+}
+
+.ui-button{
+  background: #49b1e9;
+  border: 1px;
+  border-radius: 40px;
+  height: 18%;
+  width: 12%;
+  display:initial;
+}
+
+.container{
+  position: relative;
+  vertical-align:bottom;
+  width: 100%;
+  height: 100%;
+}
+
+.icon-bar {
+  position: absolute;
+  width: 60%; /* Full-width */
+  background-color: #555; /* Dark-grey background */
+  overflow: auto; /* Overflow due to float */
+  vertical-align: bottom;
+  display: inline-block;
+  bottom: 0px;
+  left: 0px;
+}
+
+
+.icon-bar a {
+
+  float: left; /* Float links side by side */
+  text-align: start; /* Center-align text */
+  width: 25%; /* Equal width (5 icons with 20% width each = 100%)
+    padding: 12px 0; /* Some top and bottom padding */
+  transition: all 0.3s ease; /* Add transition for hover effects */
+  color: white; /* White text color */
+  font-size: 36px; /* Increased font size */
+  height: 50px;
+}
+
+a svg {
+  margin-left:auto; margin-right:auto; display:block;
+}
+
+.icon-bar a:hover {
+  background-color: #FFFFFF; /* Add a hover color */
+}
+
+.active {
+  background-color: #4CAF50; /* Add an active/current color */
+}
+
+.touchMargin {
+  width: 15%;
+  height: 100%;
+  /*z-index: 3000000;*/
+  position: absolute;
+  right: 0px;
+  /*margin-top: 8%;
+  margin-left: 85%;
+  margin-right: 0;*/
+}
+
+.creationMomo{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  background: white;
+  z-index: 10000;
+  height: 50%;
+}
+
+.plantinder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+
+.result{
+  position: relative;
+  display: inline-block;
+  border: 3px #6d8764 solid;
+  border-radius: 25px;
+  background: #53DF83;
+  margin: 5px;
+  height: 32%;
+  width: 96%;
+}
+
+.result *{
+  /*position: relative;*/
+  margin : 5px;
+  /*background: #006600;*/
+}
+
+.imageIcon{
+  float: left;
+  height: 65%;
+  width: 35%;
+
+}
+
+.imageIcon > img{
+  width: 100%;
+  height: 100%;
+  border: 5px #6d8764 solid;
+  border-radius: 25px;
+  /*object-fit: contain;*/
+}
+
+.result:first-child .imageIcon > img{
+  width: 100%;
+  height: 100%;
+  border: 5px #ffc107 solid;
+  /*object-fit: contain;*/
+}
+
+.result:nth-child(2) .imageIcon > img{
+  width: 100%;
+  height: 100%;
+  border: 5px #9e9e9e solid;
+}
+
+.result:nth-child(3) .imageIcon > img{
+  width: 100%;
+  height: 100%;
+  border: 5px #a0522d solid;
+}
+
+
+
+.description{
+  float: right;
+  height : 100%;
+  width : 59%;
+  font-size : 12px;
+  border: 3px #6d8764 solid;
+  border-radius: 25px;
+}
+
+.descripteurs{
+  margin : 25% 25% 25% 25%;
+
+}
+
+.description b{
+  display:inline-block;
+
+}
+
+.description-content{
+  margin : 3px;
+  letter-spacing: -1px;
+}
+
+.quit{
+
+  width: 14%;
+  height: 8%;
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+}
+
+.quit *{
+  width: 100%;
+  height: 100%;
+}

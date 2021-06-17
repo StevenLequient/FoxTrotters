@@ -1,0 +1,26 @@
+<section class="topaint">
+  <div class="page-header">
+    <h1 ng-bind="vm.poi.name"></h1>
+  </div>
+  <div class="pull-right"
+       ng-show="vm.poi.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="pois.edit({ poiId: vm.poi._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.poi.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.poi.user"
+            ng-bind="vm.poi.user.displayName"></span>
+      <span ng-if="!vm.poi.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.poi.content"></p>
+</section>

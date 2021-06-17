@@ -1,0 +1,74 @@
+<section class="topaint">
+    <div class="page-header">
+        <h1>Pois</h1>
+    </div>
+    <div class="list-group">
+        <a ng-repeat="poi in vm.pois"
+           ui-sref="pois.view({ poiId: poi._id })"
+           class="list-group-item">
+            <small class="list-group-item-text">
+                Posted on
+                <span ng-bind="poi.created | date:'mediumDate'"></span>
+                by
+                <span ng-if="poi.user" ng-bind="poi.user.displayName"></span>
+                <span ng-if="!poi.user">Deleted User</span>
+            </small>
+            <h4 class="list-group-item-heading" ng-bind="poi.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" ng-if="vm.pois.$resolved && !vm.pois.length">
+        No Pois yet, why don't you <a ui-sref="pois.create">create one</a>?
+    </div>
+</section>
+<section>
+    <h1>Map</h1>
+    <div id="fox-map">
+        <ng-map disable-default-u-i="true"
+                center="[{{position.lat}}, {{position.lng}}]"
+                map-type-id="terrain"
+                styles="[{featureType:'administrative',elementType:'all',stylers:[{visibility:'on'}]},{featureType:'administrative',elementType:'labels.text.fill',stylers:[{color:'#9d935e'}]},{featureType:'administrative',elementType:'labels.text.stroke',stylers:[{color:'#3f3b28'}]},{featureType:'landscape',elementType:'geometry.fill',stylers:[{color:'#5a5335'}]},{featureType:'landscape.man_made',elementType:'geometry.fill',stylers:[{color:'#4d4329'}]},{featureType:'landscape.man_made',elementType:'geometry.stroke',stylers:[{visibility:'off'}]},{featureType:'landscape.natural.terrain',elementType:'geometry.fill',stylers:[{color:'#6e6950'}]},{featureType:'poi',elementType:'geometry.fill',stylers:[{color:'#372f14'}]},{featureType:'poi',elementType:'labels',stylers:[{visibility:'off'}]},{featureType:'poi.park',elementType:'geometry.fill',stylers:[{color:'#372f14'}]},{featureType:'road',elementType:'all',stylers:[{saturation:-100},{lightness:45},{color:'#959358'}]},{featureType:'road',elementType:'labels.text',stylers:[{visibility:'off'}]},{featureType:'road.highway',elementType:'all',stylers:[{visibility:'simplified'}]},{featureType:'road.arterial',elementType:'labels.icon',stylers:[{visibility:'off'}]},{featureType:'transit',elementType:'all',stylers:[{visibility:'off'}]},{featureType:'water',elementType:'geometry.fill',stylers:[{color:'#344144'}]}]"
+                zoom="15">
+            <marker ng-repeat="Object in foxMarkers | filterByCriteria:plantname:category"
+                    id="{{Object._id}}"
+                    on-click="showDetail(Object)"
+                    position=[{{Object.coords.latitude}},{{Object.coords.longitude}}]>
+            </marker>
+
+           <!-- <info-window id="foo-iw">
+                <div ng-non-bindable="">
+                    <img ng-src="{{poi.icon}}"/>
+                    Name: {{poi.name}}<br/>
+                    Description: {{poi.desc}}<br/>
+                    Danger: {{poi.dangerzone}}<br/>
+                    Visitors: {{poi.people}}<br/>
+                    Created by: {{poi.user.displayName}}<br/>
+                    <img ng-src="{{poi.image}}"/><br/>
+                    <div id="plant-info" ng-hide="poi.plant == null">
+                        <h3>Plant informations:</h3>
+                        Common name: {{poi.plant.commonName}}<br/>
+                        <img ng-src="{{poi.plant.image[0]}}"/>
+                        Latin name: {{poi.plant.latinName}}<br/>
+                        Family: {{poi.plant.family}}<br/>
+                        Genre: {{poi.plant.genre}}<br/>
+                        <div ng-repeat="useElem in poi.plant.uses">
+                            <img ng-src="{{ useElem.theme.icon }}" width="5%"/>
+                            <h3 ng-bind="useElem.theme.desc"></h3>
+                            <p>{{useElem.desc}}</p>
+                        </div>
+                        <small>
+                            <em class="text-muted">
+                                Posted on
+                                <span ng-bind="poi.plant.created | date:'mediumDate'"></span>
+                                by
+                                <span ng-if="poi.plant.user"
+                                      ng-bind="poi.plant.user.displayName"></span>
+                                <span ng-if="!poi.plant.user">Deleted User</span>
+                            </em>
+                        </small>
+                    </div>
+                </div>
+            </info-window> -->
+        </ng-map>
+    </div>
+    <h3>End Map</h3>
+</section>

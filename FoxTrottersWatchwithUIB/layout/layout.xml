@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document>
+	<mscreen>
+		<configuration device="CIRCLE_360x360" id="config1"
+			name="common" orientation="portrait" type="common" />
+	</mscreen>
+	<views startup="view1">
+		<view id="view1" indicator="true" type="view">
+			
+		<grid align_h="fill" vsize_w="1000" align_v="fill" visible="true" weight_v="1" id="grid1" weight_h="1" vsize_h="1000">
+		<label align_v="fill" visible="true" weight_v="1" line_wrap="mixed" pack_h="400" weight_h="1" ellipsis="true" align_h="fill" wrap_width="0" pack_w="667" pack_x="202" pack_y="200" id="label2" text="My Foxtrotters Watch"></label>
+		<button align_v="fill" visible="true" weight_v="1" pack_h="364" weight_h="1" align_h="fill" pack_w="364" disable="false" pack_x="334" pack_y="636" style="bottom" id="button2" text="">
+		<event function_name="view1_button1_onclicked" signal="clicked" /></button></grid>
+		<event function_name="view1_onuib_view_create" signal="uib,view,create" /></view>
+	</views>
+</document>

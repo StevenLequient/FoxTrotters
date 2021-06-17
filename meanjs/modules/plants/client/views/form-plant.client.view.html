@@ -1,0 +1,50 @@
+<section class="topaint">
+  <div class="page-header">
+    <h1>{{vm.plant._id ? 'Edit Plant' : 'New Plant'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.plantForm" class="form-horizontal" ng-submit="vm.save(vm.form.plantForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="commonName">Common name</label>
+          <input name="commonName" type="text" ng-model="vm.plant.commonName" id="commonName" class="form-control"
+                 placeholder="Common name" required>
+          <label class="control-label" for="latinName">Latin name</label>
+          <input name="latinName" type="text" ng-model="vm.plant.latinName" id="latinName" class="form-control"
+                 placeholder="Latin name" required>
+          <label class="control-label" for="family">Family</label>
+          <input name="family" type="text" ng-model="vm.plant.family" id="family" class="form-control"
+                 placeholder="Family" required>
+          <label class="control-label" for="genre">Genre</label>
+          <input name="genre" type="text" ng-model="vm.plant.genre" id="genre" class="form-control" placeholder="Genre"
+                 required>
+          <div ng-messages="vm.form.plantForm.commonName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">The plant's common name is required.</p>
+          </div>
+        </div>
+
+        <div>
+          <h2>List of possible uses</h2>
+          <fieldset data-ng-repeat="useElem in vm.plant.uses">
+            <select>
+              <!--<option ng-repeat="op in vm.themes">{{op.name}}</option> -->
+              <option>edible</option>
+              <option>poisonous</option>
+              <option>medical</option>
+            </select>
+            <input type="text" ng-model="useElem.desc" name="useInput" placeholder="Enter use description">
+            <button type="button" class="remove" ng-show="$last" ng-click="removeUse()">-</button>
+          </fieldset>
+          <button type="button" class="addfields" ng-click="addNewUse()">Add fields</button>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.plant._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

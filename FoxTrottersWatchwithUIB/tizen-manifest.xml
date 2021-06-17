@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<manifest xmlns="http://tizen.org/ns/packages" api-version="2.3.1" package="org.fxtrotters.foxtrotterwatch" version="1.0.0">
+    <profile name="wearable"/>
+    <ui-application appid="org.fxtrotters.foxtrotterwatch" exec="foxtrotterswatch" multiple="false" nodisplay="false" taskmanage="true" type="capp">
+        <label>foxtrotterswatch</label>
+        <icon>foxtrotterswatch.png</icon>
+    </ui-application>
+    <privileges>
+        <privilege>http://tizen.org/privilege/bluetooth</privilege>
+    </privileges>
+    <feature name="http://tizen.org/feature/network.bluetooth.le">true</feature>
+    <feature name="http://tizen.org/feature/network.bluetooth">true</feature>
+    <feature name="http://tizen.org/feature/network.bluetooth.opp">true</feature>
+    <feature name="http://tizen.org/feature/network.bluetooth.hid">true</feature>
+</manifest>

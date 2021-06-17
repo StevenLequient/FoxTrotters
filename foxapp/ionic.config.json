@@ -1,0 +1,8 @@
+{
+  "name": "foxapp",
+  "app_id": "650325b1",
+  "type": "ionic1",
+  "watchPatterns": [
+    "scss/**/*"
+  ]
+}

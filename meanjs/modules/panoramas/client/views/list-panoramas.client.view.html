@@ -1,0 +1,25 @@
+<section class="topaint">
+  <div class="page-header">
+    <h1>
+      Panoramas
+      <a class="btn btn-primary pull-right" data-ui-sref="panoramas.create">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </h1>
+  </div>
+  <div class="list-group">
+    <a data-ng-repeat="panorama in vm.panoramas" data-ui-sref="panoramas.edit({panoramaId: panorama._id})" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span data-ng-bind="panorama.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="panorama.user" ng-bind="panorama.user.displayName"></span>
+        <span ng-if="!panorama.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" data-ng-bind="panorama.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-if="panoramas.$resolved && !panoramas.length">
+    No panoramas yet, why don't you <a data-ui-sref="panoramas.create">create one</a>?
+  </div>
+</section>

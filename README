@@ -1,0 +1,63 @@
+Project foxtrotters
+
+Un assistant en milieu naturel
+
+2 dossiers:
+
+foxapp, l'application mobile
+    pour install:
+    Installer NPM puis:
+        npm install -g cordova ionic
+        se mettre dans le dossier foxapp
+        npm install
+        bower install
+        cd www
+        npm install ngmap
+
+        télécharger ng cordova sur http://ngcordova.com/
+        dézipper dans le dossier foxapp/www/lib
+        on obtient le chemin foxapp/www/lib/ngCordova/dist/ng-cordova.js
+    build:
+        ionic cordova prepare android
+    run:
+        ionic cordova run android (branche un tel android en mode debug usb ou émulateur)
+        ou
+        ionic serve (pour la version nav)
+
+    erreurs courantes:
+        il faut le jdk java dans le path
+        il faut accepter la licence android sdk avec le standalone sdk manager
+        il faut avoir acces au serveur ou le lancer en local et changer la variable dbPath dans foxapp/www/js/app.js
+        en
+        var dbPath = "http://localhost";
+        pour remmettre sur le serveur:
+        var dbPath = "http://ns388671.ip-176-31-254.eu/";
+
+
+
+meanjs, application web et serveur + bd
+    install:
+        Installer npm : https://www.npmjs.com/
+        Installer mongo >3.2: https://www.mongodb.com/
+        se placer dans le dossier meanjs
+        npm install
+        bower install
+    build:
+        se placer dans le dossier meanjs
+        gulp build
+    tests:
+        gulp test
+    run:
+        ouvrir 2 consoles: une pour mongo et une pour node
+        dans le dossier de mongo (C:\Program Files\MongoDB\Server\3.4\bin sous windows par defaut)
+        mongod.exe -> lance la bd
+        dans le dossier de node  (meanjs)
+        gulp -> lance le serv
+
+        ou
+        docker-compose up
+
+Benjamin Piat
+Nicolas Bighetti
+Flavian Jacquot
+Steven Lequient

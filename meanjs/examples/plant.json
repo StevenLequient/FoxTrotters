@@ -1,0 +1,18 @@
+{
+  "pois": [],
+  "uses": [
+    {
+      "theme": {
+        "name": "edible",
+        "icon": "/modules/plants/server/img/edible.svg"
+      },
+      "desc": "ok"
+    }
+  ],
+  "genre": "Zinnia",
+  "family": "Asteraceae",
+  "latinName": "Zinnia haageana Regel",
+  "commonName": "Zinnia"
+}
+
+// pour les test de  post sur /api/plants

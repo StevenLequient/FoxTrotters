@@ -1,0 +1,25 @@
+<section class="topaint">
+  <div class="page-header">
+    <h1>
+      Planders
+      <a class="btn btn-primary pull-right" data-ui-sref="planders.create">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </h1>
+  </div>
+  <div class="list-group">
+    <a data-ng-repeat="plander in vm.planders" data-ui-sref="planders.edit({planderId: plander._id})" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span data-ng-bind="plander.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="plander.user" ng-bind="plander.user.displayName"></span>
+        <span ng-if="!plander.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" data-ng-bind="plander.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-if="planders.$resolved && !planders.length">
+    No planders yet, why don't you <a data-ui-sref="planders.create">create one</a>?
+  </div>
+</section>

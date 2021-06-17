@@ -1,0 +1,40 @@
+<div class="creationMomo" ng-controller="CreationController">
+    <div class="modal-header">
+        <h4>Créer un point</h4>
+        {{position}}
+    </div>
+    <div class="modal-body">
+        <form name="vm.form.poiForm" class="form-horizontal" ng-submit="save()" novalidate>
+            <fieldset>
+                <div class="form-group" show-errors>
+
+                    <label class="control-label" for="name">Name</label>
+                    <input name="name" type="text" ng-model="poi.name" id="name" class="form-control"
+                           placeholder="Enter name" required>
+
+                    <label class="control-label" for="desc">Description</label>
+                    <input name="desc" type="text" ng-model="poi.desc" id="desc" class="form-control"
+                           placeholder="Enter description" required>
+                    <div class="photo">
+                        <button href="#" ng-controller="PhotoController" ng-click="setURI(takePicture(options))">
+                            Ajouter une photo
+                        </button>
+                        <img src="{{$scope.poi.image}}"/>
+                    </div>
+                    <h4>Type</h4>
+                    <select ng-model="poi.typep">
+                        <option value="plant">Plant</option>
+                        <option value="viewpoint">Viewpoint</option>
+                        <option value="water">Water</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default" ng-click="createPoi()">Create</button>
+                    <button class="btn btn-default" ng-click="cancelPoi()">Cancel</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="modal-footer">
+    </div>
+</div>

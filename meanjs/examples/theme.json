@@ -1,0 +1,14 @@
+[
+  {
+    "name": "edible",
+    "icon": "/modules/plants/server/img/edible.svg"
+  },
+  {
+    "name": "medical",
+    "icon": "/modules/plants/server/img/medical.svg"
+  },
+  {
+    "name": "poisonous",
+    "icon": "/modules/plants/server/img/poisonous.svg"
+  }
+]

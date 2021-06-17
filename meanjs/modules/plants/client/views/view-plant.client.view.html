@@ -1,0 +1,35 @@
+<section class="topaint">
+  <div class="page-header">
+    <h1 ng-bind="vm.plant.commonName"></h1>
+  </div>
+  <img ng-src="{{vm.plant.image[0]}}" width="20%" />
+  <h2 ng-bind="vm.plant.latinName"></h2>
+  <h2 ng-bind="vm.plant.family"></h2>
+  <h2 ng-bind="vm.plant.genre"></h2>
+  <div ng-repeat="useElem in vm.plant.uses">
+    <img ng-src="{{ useElem.theme.icon }}" width="5%"  />
+    <h3 ng-bind="useElem.theme.desc"></h3>
+    <p>{{useElem.desc}}</p>
+  </div>
+  <div class="pull-right"
+       ng-show="vm.plant.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="plants.edit({ plantId: vm.plant._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.plant.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.plant.user"
+            ng-bind="vm.plant.user.displayName"></span>
+      <span ng-if="!vm.plant.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.plant.content"></p>
+</section>

@@ -1,0 +1,28 @@
+<section class="topaint">
+  <div class="page-header">
+    <h1>Plants</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="plant in vm.plants"
+       ui-sref="plants.view({ plantId: plant._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="plant.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="plant.user" ng-bind="plant.user.displayName"></span>
+        <span ng-if="!plant.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="plant.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.plants.$resolved && !vm.plants.length">
+    No Plants yet, why don't you <a ui-sref="plants.create">create one</a>?
+
+  </div>
+  <div ng-if="vm.plants.$resolved && !vm.plants.length">
+    Load it
+    <ng-include src="'modules/plants/client/views/examples/conv.html'"></ng-include>
+    now
+  </div>
+</section>

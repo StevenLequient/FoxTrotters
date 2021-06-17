@@ -1,0 +1,8 @@
+<ion-content title="Result plant" ng-controller="PlantinderController" on-swipe-left="stopSwipe()" id="plander">
+
+<p>Plander</p>
+    <ng-swippy class='plantinder' collection='itemsCollection' width='80%' height='80%' item-click='zoomPicture'
+               data='showinfo' collection-empty='swipeend' swipe-left='swipeLeft'  swipe-right='swipeRight' cards-number='2'
+               label-ok='Je connais cette plante' label-negative='Je ne connais pas cette plante' on-touch="disableSwipe()" on-release="enableSwipe()"></ng-swippy>
+
+</ion-content>

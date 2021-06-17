@@ -1,0 +1,22 @@
+<section class="topaint">
+  <div class="page-header">
+    <h1>Themes</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="theme in vm.themes"
+       ui-sref="themes.view({ themeId: theme._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="theme.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="theme.user" ng-bind="theme.user.displayName"></span>
+        <span ng-if="!theme.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="theme.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.themes.$resolved && !vm.themes.length">
+    No Themes yet, why don't you <a ui-sref="themes.create">create one</a>?
+  </div>
+</section>

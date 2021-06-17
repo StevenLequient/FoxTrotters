@@ -1,0 +1,10 @@
+sudo docker-compose -f docker-compose-production.yml up -d
+
+sudo docker rmi $(sudo docker images | grep "none" | awk "{print $3}")
+
+response_type=code
+redirect_uri=dbPathapi/auth/google/callback
+scope=https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email
+client_id=39639065033-naj3v0bmnbolmg910rd3it72c367crjo.apps.googleusercontent.
+
+docker build -f Dockerfile-production --no-cache=true .

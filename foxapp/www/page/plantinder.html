@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link href="../lib/ng-swippy/ngswippy.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+
+</head>
+<body ng-app="foxapp" style="width: 500px; height: 1200px;">
+
+
+<ion-content>
+
+  <div modal="showModal" close="cancel()">
+    <div class="modal-header">
+      <h4>Modal Dialog</h4>
+    </div>
+    <div class="modal-body">
+      <div name="plantinder" ng-controller="PlantinderController" >
+        <ng-swippy class="plantinder"collection='itemsCollection' width='100%' height='100%' item-click='zoomPicture' data='showinfo'collection-empty='swipeend' swipe-left='swipeLeft'  swipe-right='swipeRight' cards-number='2' label-ok='Je connais cette plantes!' label-negative='Je ne connais pas cette plante'></ng-swippy>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success" ng-click="ok()">Okay</button>
+      <button class="btn" ng-click="cancel()">Cancel</button>
+    </div>
+  </div>
+
+</ion-content>
+
+</body>
+</html>

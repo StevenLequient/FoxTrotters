@@ -1,0 +1,85 @@
+<ion-content title="Map">
+
+
+    <div ng-controller="GMapController" style="height: 100%; width: 100%;"id="fox-map">
+      <ng-include src="'view/search.html'"></ng-include>
+    <div class="touchMargin" on-touch="enableSwipe()" on-release="disableSwipe()">
+    </div>
+
+      <ng-map disable-default-u-i="true"
+            center="[{{position.lat}}, {{position.lng}}]"
+            map-type-id="terrain"
+            styles="[{featureType:'administrative',elementType:'all',stylers:[{visibility:'on'}]},{featureType:'administrative',elementType:'labels.text.fill',stylers:[{color:'#9d935e'}]},{featureType:'administrative',elementType:'labels.text.stroke',stylers:[{color:'#3f3b28'}]},{featureType:'landscape',elementType:'geometry.fill',stylers:[{color:'#5a5335'}]},{featureType:'landscape.man_made',elementType:'geometry.fill',stylers:[{color:'#4d4329'}]},{featureType:'landscape.man_made',elementType:'geometry.stroke',stylers:[{visibility:'off'}]},{featureType:'landscape.natural.terrain',elementType:'geometry.fill',stylers:[{color:'#6e6950'}]},{featureType:'poi',elementType:'geometry.fill',stylers:[{color:'#372f14'}]},{featureType:'poi',elementType:'labels',stylers:[{visibility:'off'}]},{featureType:'poi.park',elementType:'geometry.fill',stylers:[{color:'#372f14'}]},{featureType:'road',elementType:'all',stylers:[{saturation:-100},{lightness:45},{color:'#959358'}]},{featureType:'road',elementType:'labels.text',stylers:[{visibility:'off'}]},{featureType:'road.highway',elementType:'all',stylers:[{visibility:'simplified'}]},{featureType:'road.arterial',elementType:'labels.icon',stylers:[{visibility:'off'}]},{featureType:'transit',elementType:'all',stylers:[{visibility:'off'}]},{featureType:'water',elementType:'geometry.fill',stylers:[{color:'#344144'}]}]"
+            zoom="15" >
+        <shape name="polyline"
+               path={{GPSTrace}}
+               geodesic="true"
+               stroke-color="#FF0000"
+               stroke-opacity="1.0"
+               stroke-weight="2">
+        </shape>
+        <marker ng-repeat="Object in foxMarkers | filterByCriteria:plantname:category"
+                id="{{Object._id}}"
+                on-click="showDetail(Object)"
+                position=[{{Object.coords.latitude}},{{Object.coords.longitude}}]
+                icon="{
+                            url:'pictures/icons/{{Object.typep}}.png',
+                            scaledSize:[20,20]
+                            }"
+        >
+        </marker>
+        <marker position="[{{position.lat}},{{position.lng}}]"
+                icon="{
+                            url:'pictures/icons/me.png',
+                            scaledSize:[20,20]
+                            }"
+        >
+        </marker>
+        <info-window id="foo-iw">
+            <div ng-non-bindable="">
+                Name: {{poi.name}}<br/>
+                Description: {{poi.desc}}<br/>
+                Danger: {{poi.dangerzone}}<br/>
+                Visitors: {{poi.people}}<br/>
+                Created by: {{poi.user.displayName}}<br/>
+                Score: {{poi.score}}<br/>
+                <div>
+                <button title="Up Votes" ng-click="vote(1)">+</button><br/>
+                <button title="Down Votes" ng-click="vote(0)">-</button>
+                </div>
+                <div>
+                    Image:
+                    <img ng-src="{{removeSlash(poi.image)}}" /><br/>
+                </div>
+                <div id="plant-info" ng-hide="poi.plant == null">
+                    <h3>Plant informations:</h3>
+                    Common name: {{poi.plant.commonName}}<br/>
+                    <img ng-src="{{poi.plant.image[0]}}" />
+                    Latin name: {{poi.plant.latinName}}<br/>
+                    Family: {{poi.plant.family}}<br/>
+                    Genre: {{poi.plant.genre}}<br/>
+                    <!-- class="glyphicon glyphicon-chevron-down"ng-class="{true:'down', false:''}[vote=='down']"-->
+                    <div ng-repeat="useElem in poi.plant.uses">
+                        <img ng-src="{{ useElem.theme.icon }}" width="5%"  />
+                        <h3 ng-bind="useElem.theme.desc"></h3>
+                        <p>{{useElem.desc}}</p>
+                    </div>
+                    <small>
+                        <em class="text-muted">
+                            Posted on
+                            <span ng-bind="poi.plant.created | date:'mediumDate'"></span>
+                            by
+                            <span ng-if="poi.plant.user"
+                                  ng-bind="poi.plant.user.displayName"></span>
+                            <span ng-if="!poi.plant.user">Deleted User</span>
+                        </em>
+                    </small>
+                </div>
+
+
+
+            </div>
+        </info-window>
+    </ng-map>
+</div>
+</ion-content>

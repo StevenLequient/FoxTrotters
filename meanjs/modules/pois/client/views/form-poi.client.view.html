@@ -1,0 +1,46 @@
+<section class="topaint">
+  <div class="page-header">
+    <h1>{{vm.poi._id ? 'Edit Poi' : 'New Poi'}}</h1>
+  </div>
+  <div class="col-md-8">
+    <ng-map class="gov-map" zoom="10" center="43.6156, 7.0719" on-click="vm.addMarker()">
+      <!-- <marker ng-repeat="marker in listmarker" position={{marker.latitude}},{{marker.longitude}}></marker> -->
+      <marker
+        position="{{vm.poi.coords.latitude}}, {{vm.poi.coords.longitude}}"
+        icon="{path:'CIRCLE', scale: 5, strokeColor: 'red', zIndex:10}"></marker>
+    </ng-map>
+  </div>
+  <div class="col-md-4">
+    <form name="vm.form.poiForm" class="form-horizontal" ng-submit="vm.save(vm.form.poiForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+
+          <label class="control-label" for="name">Name</label>
+          <input name="name" type="text" ng-model="vm.poi.name" id="name" class="form-control" placeholder="Enter name" required>
+
+          <label class="control-label" for="desc">Description</label>
+          <input name="desc" type="text" ng-model="vm.poi.desc" id="desc" class="form-control" placeholder="Enter description" required>
+
+          <h4>Type</h4>
+          <select ng-model="vm.poi.typep">
+            <option value="plant">Plant</option>
+            <option value="viewpoint">Viewpoint</option>
+            <option value="water">Water</option>
+          </select>
+          <div ng-messages="vm.form.poiForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Poi's name is required.</p>
+          </div>
+          <div ng-messages="vm.form.poiForm.desc.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Poi's description is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.poi._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
